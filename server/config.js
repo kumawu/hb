@@ -2,5 +2,5 @@
 module.exports = {
     //默认启动3个worker子进程作为服务器
     'workerNum': 1,
-    'rootPath': '/data1/wwwroot/psm/'
+    'rootPath': 'e:/Code/weibo/research/hb/server/'
 };
