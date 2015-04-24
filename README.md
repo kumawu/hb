@@ -1,3 +1,7 @@
+#HappyBirthDay project from Kimura
+
+Use react, react-canvas, express4, gulp, webPacker etc.
+For smooth animations, there is much more difficult by rendering HTML and DOM in Browser. Canvas is a new way to build webAPP. We could do more interaction for our product.
 # react-canvas
 
 [Introductory blog post](http://engineering.flipboard.com/2015/02/mobile-web/)
