@@ -19,8 +19,8 @@ var TEXT_ALPHA_SPEED_OUT_MULTIPLIER = 1.25;
 var TEXT_ALPHA_SPEED_IN_MULTIPLIER = 2.6;
 var IMAGE_LAYER_INDEX = 1;
 var TEXT_LAYER_INDEX = 2;
-
-var backgoundImage = './components/res/starry.jpg';
+var rootPath = '/apps/timeline/components';
+var backgoundImage = rootPath+'/res/starry.jpg';
 var Stars = require('./goods/Stars');
 var Angel = require('./goods/Angel');
 var Head = require('./goods/Head');
@@ -58,7 +58,7 @@ var Page1 = React.createClass({
   },
   componentWillMount: function () {
   //   // Pre-compute headline/excerpt text dimensions.
-      this.article = {name:'王晓霞',constellation:'金牛座',desc:'1992年11月13日， 夜空中诞生了一颗新星， 飘摇中落到了微博的树枝上。'};
+      this.article = {name:window.$CONFIG['uname'],constellation:'金牛座',desc:'1992年11月13日， 夜空中诞生了一颗新星， 飘摇中落到了微博的树枝上。'};
 
     //this.calTextMetric();
   },

@@ -9,7 +9,7 @@ var Page1 = require('./components/Page1');
 var Page2 = require('./components/Page2');
 var Page3 = require('./components/Page3');
 var Page4 = require('./components/Page4');
-var articles = require('../common/data');
+// var articles = require('../common/data');
 
 var Surface = ReactCanvas.Surface;
 var ListView = ReactCanvas.ListView;
@@ -36,7 +36,7 @@ var App = React.createClass({
 
   renderPage: function (pageIndex, scrollTop) {
     var size = this.getSize();
-    var article = articles[pageIndex % articles.length];
+    // var article = articles[pageIndex % articles.length];
     var pageScrollTop = pageIndex * this.getPageHeight() - scrollTop;
     var widthRatio = size.width/1242;
     var heightRatio = size.height/2208;
@@ -44,7 +44,6 @@ var App = React.createClass({
       <Page
         width={size.width}
         height={size.height}
-        article={article}
         widthRatio={widthRatio}
         heightRatio={heightRatio}
         pageIndex={pageIndex}

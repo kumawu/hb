@@ -39,7 +39,7 @@ var Ground = React.createClass({
     // console.log('this is Ground rendering');
     var imageStyle = this.getImageStyle();
     return (
-      <Image style={imageStyle} src='../timeline/components/res/ground.png' fadeIn={true} useBackingStore={true} />
+      <Image style={imageStyle} src='/apps/timeline/components/res/ground.png' fadeIn={true} useBackingStore={true} />
     );
   },
 

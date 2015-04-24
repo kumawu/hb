@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    meta(http-equiv='Content-type', content='text/html; charset=utf-8')
+    meta(name='viewport', content='initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    title 猪，你生日快乐
+    link(rel='stylesheet', type='text/css', href='/apps/common/examples.css')
+    script(src='/apps/common/touch-emulator.js')
+    script(type='text/javascript').
+      TouchEmulator();
+    script(type='text/javascript').
+      var $CONFIG = {};
+      $CONFIG['uname'] = '#{name}';
+      $CONFIG['head'] = '#{head}';
+  body
+    #main
+    script(src='/build/timeline.js')

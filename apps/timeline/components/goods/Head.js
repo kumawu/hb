@@ -18,7 +18,7 @@ var Head = React.createClass({
     var imageStyle = this.getImageStyle();
     return (
       <Group style={this.getTextGroupStyle()}>
-        <Image style={imageStyle} src='http://tp3.sinaimg.cn/1662625950/180/5704204700/0' fadeIn={true} useBackingStore={true} />
+        <Image style={imageStyle} src={$CONFIG['head']} fadeIn={true} useBackingStore={true} />
       </Group>
     );
   },

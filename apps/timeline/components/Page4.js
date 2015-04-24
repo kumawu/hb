@@ -20,8 +20,8 @@ var TEXT_ALPHA_SPEED_IN_MULTIPLIER = 2.6;
 var IMAGE_LAYER_INDEX = 1;
 var TEXT_LAYER_INDEX = 2;
 var wordList = [];
-var backgoundImage = './components/res/page4.jpg';
-// var Stars = require('./goods/Stars');
+var backgoundImage = '/apps/timeline/components/res/page4.jpg';
+// var Stars = require('/apps/timeline/components/goods/Stars');
 var Page4 = React.createClass({
   mixins: [tweenState.Mixin],
   getInitialState: function () {
