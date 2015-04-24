@@ -1,6 +1,7 @@
 *.zip
 *.settings
 *.bak
+build
 # Logs
 logs
 *.log
