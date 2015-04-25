@@ -27,7 +27,6 @@ var Page = React.createClass({
   propTypes: {
     width: React.PropTypes.number.isRequired,
     height: React.PropTypes.number.isRequired,
-    article: React.PropTypes.object.isRequired,
     scrollTop: React.PropTypes.number.isRequired,
     pageIndex: React.PropTypes.number.isRequired
   },
@@ -60,9 +59,9 @@ var Page = React.createClass({
         <Temp
           width={this.props.width}
           height={this.props.height}
+          ANIMATIONON:{this.props.ANIMATIONON}
           widthRatio={this.props.widthRatio}
           heightRatio={this.props.heightRatio}
-          article={this.props.article}
           pageIndex={this.props.pageIndex}
           scrollTop={this.props.scrollTop} />
       </Group>

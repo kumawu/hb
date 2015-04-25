@@ -14,6 +14,7 @@ var Page4 = require('./components/Page4');
 var Surface = ReactCanvas.Surface;
 var ListView = ReactCanvas.ListView;
 var pages = [Page1,Page2,Page3,Page4];
+var ANIMATIONON = true;
 var App = React.createClass({
   
   render: function () {
@@ -47,6 +48,7 @@ var App = React.createClass({
         widthRatio={widthRatio}
         heightRatio={heightRatio}
         pageIndex={pageIndex}
+        ANIMATIONON:{ANIMATIONON}
         container={pages[pageIndex]}
         scrollTop={pageScrollTop} />
     );

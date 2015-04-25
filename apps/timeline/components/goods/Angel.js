@@ -87,7 +87,7 @@ var Angel = React.createClass({
     this.firstTime = true;
   },
   componentDidUpdate:function(){
-    if (this.props.scrollTop == 0 && this.firstTime == true) {
+    if (this.props.scrollTop == 0 && this.firstTime == true && this.props.ANIMATIONON) {
       this.firstTime = false;
       this.falling();
     }

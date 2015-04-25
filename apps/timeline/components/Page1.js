@@ -99,11 +99,13 @@ var Page1 = React.createClass({
         <Stars
           useBackingStore={true}
           width={this.props.width}
+          ANIMATIONON:{this.props.ANIMATIONON}
           height={this.props.height}
           scrollTop={this.props.scrollTop} />
         <Angel
           useBackingStore={true}
           width={this.props.width}
+          ANIMATIONON:{this.props.ANIMATIONON}
           height={this.props.height}
           scrollTop={this.props.scrollTop} />
         <Constellation

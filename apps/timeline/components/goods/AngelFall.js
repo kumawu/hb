@@ -69,7 +69,7 @@ var AngelFall = React.createClass({
   },
   componentDidUpdate:function(){
     console.log('af update',this.props.scrollTop,this.firstTime);
-    if (this.props.scrollTop == 0 && this.firstTime == true) {
+    if (this.props.scrollTop == 0 && this.firstTime == true && this.props.ANIMATIONON) {
       for (var i = 0; i < StarsNum; i++) {
       AFitems.push(this.renderStar('blink'+i));
     }

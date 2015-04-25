@@ -66,9 +66,13 @@ var Stars = React.createClass({
     items=[];
   },
   componentDidMount: function() {
-    this.changeAlpha();
+    this.firstTime = true;
   },
   componentDidUpdate:function(){
+    if (this.props.scrollTop == 0 && this.firstTime == true && this.props.ANIMATIONON) {
+      this.firstTime = false;
+      this.falling();
+    }
   },
   render: function() {
     if(this.props.scrollTop!==0){

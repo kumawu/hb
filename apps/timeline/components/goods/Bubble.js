@@ -68,9 +68,9 @@ var Bubble = React.createClass({
   },
   componentDidUpdate:function(){
     console.log('bubble update');
-    if (this.props.scrollTop == 0 && this.firstTime == true) {
+    if (this.props.scrollTop == 0 && this.firstTime == true && this.props.ANIMATIONON) {
       this.firstTime = false;
-      // this.changeTop();
+      this.changeTop();
     }
   },
   render: function() {
