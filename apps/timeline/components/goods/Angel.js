@@ -44,11 +44,11 @@ var Angel = React.createClass({
       var _initTop = Math.random() * this.props.height / 1.7;
       var _initLeft = Math.random() * this.props.width / 1.5;
       console.log('This is Angel call setState');
-      // this.setState({
-      //   fStarsPosTop: _initTop,
-      //   fStarsPosLeft: _initLeft,
-      //   fStarsAlpha:0
-      // });
+      this.setState({
+        fStarsPosTop: _initTop,
+        fStarsPosLeft: _initLeft,
+        fStarsAlpha:0
+      });
       clearTime = setTimeout(this.falling, 3000);
     } else {
       renderTimes++;
