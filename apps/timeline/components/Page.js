@@ -59,7 +59,7 @@ var Page = React.createClass({
         <Temp
           width={this.props.width}
           height={this.props.height}
-          ANIMATIONON:{this.props.ANIMATIONON}
+          ANIMATIONON={this.props.ANIMATIONON}
           widthRatio={this.props.widthRatio}
           heightRatio={this.props.heightRatio}
           pageIndex={this.props.pageIndex}

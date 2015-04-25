@@ -48,7 +48,7 @@ var App = React.createClass({
         widthRatio={widthRatio}
         heightRatio={heightRatio}
         pageIndex={pageIndex}
-        ANIMATIONON:{ANIMATIONON}
+        ANIMATIONON={ANIMATIONON}
         container={pages[pageIndex]}
         scrollTop={pageScrollTop} />
     );

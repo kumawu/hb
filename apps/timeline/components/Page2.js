@@ -80,6 +80,7 @@ var Page2 = React.createClass({
       <Group style={groupStyle}>
         <Image style={imageStyle} src={backgoundImage} fadeIn={true} useBackingStore={true} />
         <AngelFall
+          ANIMATIONON={this.props.ANIMATIONON}
           width={this.props.width}
           height={this.props.height}
           scrollTop={this.props.scrollTop} />
