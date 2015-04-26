@@ -27,7 +27,7 @@ var Body = React.createClass({
       console.log('This is Body call tweenState');
       this.tweenState('bodyTop', {
         easing: tweenState.easingTypes.easeInOutQuad,
-        duration: 500,
+        duration: 2000,
         delay: 50,
         endValue: this.props.height / 2 - this.h / 4
       });
