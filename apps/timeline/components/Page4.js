@@ -20,7 +20,7 @@ var TEXT_ALPHA_SPEED_IN_MULTIPLIER = 2.6;
 var IMAGE_LAYER_INDEX = 1;
 var TEXT_LAYER_INDEX = 2;
 var wordList = [];
-var backgoundImage = '/apps/timeline/components/res/page4.jpg';
+var backgroundImage = '/apps/timeline/components/res/page4.jpg';
 // var Stars = require('/apps/timeline/components/goods/Stars');
 var Page4 = React.createClass({
   mixins: [tweenState.Mixin],
@@ -42,7 +42,7 @@ var Page4 = React.createClass({
     if (this.props.scrollTop == 0 && this.firstTime == true) {
       var self = this;
       this.firstTime = false;
-      console.log('This is page3 call tweenState');
+      // console.log('This is page4 call tweenState');
       // this.tweenState('alpha', {
       //   easing: tweenState.easingTypes.easeInOutQuad,
       //   duration: 500,
@@ -63,37 +63,39 @@ var Page4 = React.createClass({
  
   render: function () {
     console.log('this is Page4 rendering',this.state);
+    var _temp = $CONFIG['uname'].split('');
+    var name = '';
+    _temp.map(function(item){
+      name += item + ' '
+    });
+    console.log('name',name);
     var groupStyle = this.getGroupStyle();
     var imageStyle = this.getImageStyle();
+    var logoStyle = this.getLogoStyle();
+    var textStyle = this.getTextStyle();
+    var text2Style = this.getTextStyle();
+    text2Style.top += 30*_temp.length;
+    text2Style.fontSize =CONTENT_INSET; 
     var pageIndex = this.props.pageIndex;
     return (
       <Group style={groupStyle}>
-        <Image style={imageStyle} src={backgoundImage} fadeIn={true} useBackingStore={true} />
+        <Image style={imageStyle} src={backgroundImage} fadeIn={true} useBackingStore={true} />
         <Lantern
           widthRatio = {this.props.widthRatio}
           heightRatio = {this.props.heightRatio}
+          ANIMATIONON={this.props.ANIMATIONON}
           scrollTop={this.props.scrollTop}
           width={this.props.width}
           height={this.props.height} />
         <Group style={this.getTextGroupStyle()} useBackingStore={true}>
-          
+          <Text style={textStyle}>{name}</Text>
+          <Text style={text2Style}>生 日 快 乐</Text>
+          <Image style={logoStyle} src='/apps/timeline/components/res/weibologo.png' useBackingStore={true} />
         </Group>
       </Group>
     );
   },
-  renderText:function(text,index){
-    console.log('Page4 cal text line');
-    return (
-      <Text style={this.getArticleStyle(text,index)} key={'page3W'+index}>{text}</Text>
-    );
-  },
-  formatArticle:function(data){
-    // var self = this;
-    // var words = data.split('\n');
-    // words.map(function(text,index){
-    //   wordList.push(self.renderText(text,index));
-    // });
-  },
+
     // Styles
   // ======
 
@@ -106,24 +108,46 @@ var Page4 = React.createClass({
     };
   },
 
-  getImageHeight: function () {
-    return Math.round(this.props.height/1.5);
-  },
-
   getImageStyle: function () {
     return {
       top: 0,
       left: 0,
       width: this.props.width,
       height: this.props.height,
-      backgroundColor: '#eee',
+      backgroundColor: '#000',
       zIndex: IMAGE_LAYER_INDEX,
       alpha: 1
     };
   },
-
+  getLogoStyle : function(){
+    var _w = 70*this.props.widthRatio;
+    return {
+      top: 1776*this.props.heightRatio,
+      left: this.props.width/2-_w/2,
+      width: _w,
+      height: 57*this.props.heightRatio,
+      zIndex: IMAGE_LAYER_INDEX,
+      alpha: 1
+    };
+  },
+  getTextStyle: function(){
+    return {
+      top: this.props.height/2,
+      left:this.props.width/2 - CONTENT_INSET/2,
+      width: CONTENT_INSET,
+      height: CONTENT_INSET *20,
+      zIndex: TEXT_LAYER_INDEX,
+      alpha: 1,
+      shadowColor:'#fff',
+      color:'#fff',
+      fontSize: CONTENT_INSET*1.5,
+      lineHeight: LINEHEIGHT,
+      fontFace: FontFace('Georgia, serif'),
+      textAlign:'center',
+      textBaseline :'middle'
+    };
+  },
   getTextGroupStyle: function () {
-    var imageHeight = this.getImageHeight();
     var translateY = 0;
     var alphaMultiplier = (this.props.scrollTop <= 0) ? -TEXT_ALPHA_SPEED_OUT_MULTIPLIER : TEXT_ALPHA_SPEED_IN_MULTIPLIER;
     var alpha = 1 - (this.props.scrollTop / this.props.height) * alphaMultiplier;

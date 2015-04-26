@@ -44,7 +44,7 @@ var Stars = React.createClass({
     }
     var _newValue = increase?_a+_step:_a-_step;
     console.log('This is stars call setState');
-    // this.setState({starsAlpha:_newValue,increaseLock:_lock});
+    this.setState({starsAlpha:_newValue,increaseLock:_lock});
     //待检测是否有重复
     // this._pendingAnimationFrame = requestAnimationFrame(this.changeAlpha);
     this.blinkLoop = setTimeout(this.changeAlpha,40);

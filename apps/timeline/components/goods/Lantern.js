@@ -7,10 +7,10 @@ var ReactCanvas = require('react-canvas');
 var Group = ReactCanvas.Group;
 var Image = ReactCanvas.Image;
 var tweenState = require('react-tween-state');
-var lanternNum = 9;
+var lanternNum = 3;
 var lanternItems = [];
 var lanternElement = [];
-var lanternElement = [];
+var lightItems = [9,4,1];
 var imageUrl = '/apps/timeline/components/res/lantern/';
 var Lantern = React.createClass({
   mixins: [tweenState.Mixin],
@@ -29,26 +29,38 @@ var Lantern = React.createClass({
   },
   componentWillMount: function() {
     if(lanternItems.length == 0){
-      for (var i = 0; i < lanternNum; i++) {
-        lanternItems.push({"index":i,"url":imageUrl+(i+1)+'.png',flag:false});
-      }
+      lightItems.map(function(name,index){
+        lanternItems.push({"index":index,"url":imageUrl+name+'.png',flag:false});
+      })
+      
+      // for (var i = 0; i < lanternNum; i++) {
+      //   lanternItems.push({"index":i,"url":imageUrl+(i+1)+'.png',flag:false});
+      // }
     }
   },
   changeAlpha : function(){
     var self = this;
-    var randomIndex = Math.ceil(Math.random() * (lanternNum-1));
-    var randomTime = Math.random() * 200;
+    var randomIndex = Math.floor(Math.random() * lanternNum);
+    var randomTime = Math.random() * 1000;
     console.log('lantern randomIndex',randomIndex);
     if (!lanternItems[randomIndex].flag) {
-      console.log('lantern randomIndex call alpha for',randomIndex,lanternItems[randomIndex]);
+      // console.log('lantern randomIndex call alpha for',randomIndex);
       lanternItems[randomIndex].flag = true;
       this.tweenState('alpha' + randomIndex, {
         easing: tweenState.easingTypes.easeInOutQuad,
-        duration: 5000,
+        duration: 500,
         delay: 100,
         endValue: 1,
         onEnd:function(){
-          lanternItems[randomIndex].flag = false;
+          self.tweenState('alpha' + randomIndex, {
+            easing: tweenState.easingTypes.easeInOutQuad,
+            duration: 500,
+            delay: 100,
+            endValue: 0.1,
+            onEnd:function(){
+              lanternItems[randomIndex].flag = false;
+            }
+          });
         }
       });
     }
@@ -78,7 +90,7 @@ var Lantern = React.createClass({
   },
   componentDidUpdate:function(){
     // console.log('lantern update', this.props.scrollTop, this.firstTime);
-    if (this.props.scrollTop == 0 && this.firstTime == true) {
+    if (this.props.scrollTop == 0 && this.firstTime == true  && this.props.ANIMATIONON) {
       this.firstTime = false;
       this.changeAlpha();
     }
@@ -88,61 +100,47 @@ var Lantern = React.createClass({
     if(this.props.scrollTop!==0){
       // this.stopAni();
     }
-    var self = this;
-    // console.log('This is Lantern rendering',this.state,lanternItems.length);
+    var groupStyle = this.getGroupStyle();
     lanternElement = lanternItems.map(this.renderLanterns);
+    // console.log('This is Lantern rendering',this.state,lanternItems.length);
+    // lanternElement = lanternItems.map(this.renderLanterns);
     console.log('lantern after rendering lanternElement',lanternElement);
     return (
-      <Group style={this.getTextGroupStyle()} useBackingStore={true}>
+      <Group style={groupStyle}>
         {lanternElement}
       </Group>
     );
   },
   renderLanterns : function (item) {
     var itemIndex = item.index;
-    var item;
-    var style = {
-      top: 0,
-      left: 0,
-      width: this.props.width,
-      height: this.props.height,
-      zIndex: 4,
-      alpha:this.getTweeningValue('alpha'+itemIndex),//this.getTweeningValue('alpha'+itemIndex)
-    };
-    if(!lanternElement[itemIndex]){
-      item = this.createImage(lanternItems[itemIndex],style,itemIndex);
-    }else{
-      item = lanternElement[itemIndex];
-      console.log('lantern renderLanterns item',itemIndex,this.getTweeningValue('alpha'+itemIndex),lanternItems[itemIndex].flag);
-      item.props.style = style;
-    }
-    var srcUrl = lanternItems[itemIndex].url;
-    // console.log('lantern renderLanterns',itemIndex,this.state['alpha'+itemIndex],srcUrl);
-    // console.log('lantern renderLanterns',lanternItems,itemIndex,lanternItems[itemIndex]);
-    // console.log('lantern renderLanterns',item);
-    return item;
-  },
-
-  createImage:function(opt,style,index){
-    console.log('lantern createImage',index,opt);
+    var style = this.getLanternStyle(itemIndex);
     return (
-      <Image src={opt.url}  style = {style} key={'lantern'+index} />
+      <Image style = {style} src={lanternItems[itemIndex].url}  key={'lantern'+itemIndex} />
     )
   },
 
   // Styles
   // ======
-  
-  getTextGroupStyle: function () {
+  getLanternStyle:function(index){
+    console.log('getLanternStyle',index,this.getTweeningValue('alpha'+index));
     return {
-      width: this.props.width,
-      height: this.props.height,
       top: 0,
       left: 0,
-      alpha: 1,
-      zIndex: 2
+      width: this.props.width,
+      height: this.props.height,
+      zIndex: 4,
+      alpha:this.getTweeningValue('alpha'+index),//this.getTweeningValue('alpha'+itemIndex)
     };
-  }
+  },
+  getGroupStyle: function () {
+    return {
+      top: 0,
+      left: 0,
+      zIndex: 4,
+      width: this.props.width,
+      height: this.props.height
+    };
+  },
 });
 
 module.exports = Lantern;

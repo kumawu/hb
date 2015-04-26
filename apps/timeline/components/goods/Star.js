@@ -19,23 +19,10 @@ var Star = React.createClass({
     };
   },
   componentWillMount: function() {
-    
-    // this.setState({starsTop:_newValue});
-    // //待检测是否有重复
-    // requestAnimationFrame(this.changeTop);
-    // // setTimeout(this.changeTop,1000);
-    this.regStop();
+
   },
-  regStop:function(){
-    // var self = this;
-    // setTimeout(function() {
-    //   self.stopAni();
-    // }, 50000);
-  },
-  stopAni:function(){
-  },
+
   componentWillUnmount:function(){
-    this.stopAni();
   },
   changeAlpha : function(){
     var self = this;

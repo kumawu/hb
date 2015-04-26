@@ -8,10 +8,9 @@ var Group = ReactCanvas.Group;
 var Text = ReactCanvas.Text;
 var FontFace = ReactCanvas.FontFace;
 var measureText = ReactCanvas.measureText;
-var StarsNum = 10;
+var StarsNum = 30;
 var items = [];
-var timer;
-var Bubble = React.createClass({
+var Star4page5 = React.createClass({
   getInitialState: function () {
     return {
       starsTop:0
@@ -20,62 +19,77 @@ var Bubble = React.createClass({
   componentWillMount: function() {
     for (var i = 0; i < StarsNum; i++) {
       var titleStyle = this.getTitleStyle();
-      console.log('calculating bubble postion');
-      items.push(this.renderStar('bubble'+i, titleStyle));
+
+      console.log('calculating star4page5 postion',titleStyle);
+      items.push(this.renderStar('star4page5'+i, titleStyle));
     }
-    console.log('bubble willMount');
+    this.firstTime = true;
+    console.log('star4page5 willMount');
   },
-  changeTop : function(){
-    console.log('bubble change Top',this.props.scrollTop);
+  changeDirection : function(d,step){
+    var attr = 'top';
+    var _step = 0;
+    if(d=='left'){
+      attr = 'left';
+      _step = 0-step*1;
+    }else if(d=='right'){
+      attr = 'left';
+      _step = step;
+    }
+    console.log('Star4page5 change ',attr);
 
     var self = this;
-    var _top = 0;
+    var _newValue = 0;
     items.map(function(item){
-      _top = item.props.style.top*1-1;
-      item.props.style.alpha = 0.4;
-      if(_top <= self.props.height/2-140){
-        item.props.style.alpha = 0;
-        _top = Math.random()*self.props.height/5+self.props.height/2;
+      _newValue = item.props.style[attr]*1+_step;
+      // item.props.style.alpha = 0.4;//do u need fadein?
+      if(_newValue <= 0){
+        // item.props.style.alpha = 0;
+        _newValue = self.props.width;
       }
-      console.log('bubble items',_top,item.props.style.top);
-      item.props.style.top = _top;
+      console.log('Star4page5 items',attr,_newValue,item.props.style[attr]);
+      item.props.style[attr] = _newValue;
       
     });
     
-    console.log('This is Bubble call setState');
-    this.setState({starsTop:_top});
+    console.log('This is star4page5 call setState');
+    this.setState({starsTop:_newValue});
     //待检测是否有重复
-    // this._pendingAnimationFrame= requestAnimationFrame(this.changeTop);
-    timer = setTimeout(this.changeTop,40);
+    this._pendingAnimationFrame= requestAnimationFrame(function(){
+      self.changeDirection(d,step);
+    });
+    // setTimeout(function(){
+    //   self.changeDirection(d,step)
+    // },40);
+    this.regStop();
+  },
+  regStop:function(){
+    var self = this;
     setTimeout(this.stopAni, 50000);
   },
- 
   stopAni:function(){
-    console.log('bubble stop ani');
-    clearTimeout(timer);
-    // cancelAnimationFrame(this._pendingAnimationFrame);
+    console.log('star4page5 stop ani');
+    cancelAnimationFrame(this._pendingAnimationFrame);
   },
   componentWillUnmount:function(){
-    console.log('bubble unmount');
+    console.log('star4page5 unmount');
     this.stopAni();
     items=[];
   },
   componentDidMount: function() {
     this.firstTime = true;
-    console.log('bubble did mount');
+    console.log('star4page5 did mount');
   },
   componentDidUpdate:function(){
-    // console.log('bubble update',this.props.ANIMATIONON,this.props.scrollTop,this.firstTime);
+    console.log('star4page5 update');
     if (this.props.scrollTop == 0 && this.firstTime == true && this.props.ANIMATIONON) {
       this.firstTime = false;
-      console.log('bubble change Top begin');
-      this.changeTop();
+      this.changeDirection('left',2);
     }
   },
   render: function() {
-    // console.log('This Bubble rendering.',items,(items.length != 0)?items[0].props.style.top:0,this.props.scrollTop);
+    console.log('This Star4page5 rendering.',items,(items.length != 0)?items[0].props.style.top:0,this.props.scrollTop);
     if(this.props.scrollTop!==0){
-      console.log('bubble begin scroll');
       this.stopAni();
     }
     return (
@@ -86,7 +100,7 @@ var Bubble = React.createClass({
   },
   renderStar : function (index,titleStyle) {
     return (
-      <Text style = {titleStyle} key={index} >o< /Text>
+      <Text style = {titleStyle} key={index} >.< /Text>
     );
   },
 
@@ -94,20 +108,20 @@ var Bubble = React.createClass({
   // ======
   
   getTitleStyle: function() {
-    var size = Math.ceil(Math.random()*10);
+    var size = Math.ceil(Math.random()*20);
     return {
       alpha:.4,
-      backgroundColor:'#fff',
       shadowColor: '#fff',
       shadowBlur:10,
       borderRadius:size/2,//size/2
-      left: Math.random()*this.props.width/2+this.props.width/4,
+      left: Math.random()*this.props.width/2,
       width: size,
       height: size,
       fontSize: size,
       lineHeight: size,
       top: Math.random()*this.props.height/2+this.props.height/5,
       color: '#fff',
+      zIndex: 1,
       fontFace: FontFace('Avenir Next Condensed, Helvetica, sans-serif', null, {
         weight: 400
       })
@@ -121,8 +135,8 @@ var Bubble = React.createClass({
     // alpha = Math.min(Math.max(alpha, 0), 1);
     // translateY = -this.props.scrollTop * TEXT_SCROLL_SPEED_MULTIPLIER;
     return {
-      width: Math.random()*this.props.width/2-this.props.width/4+this.props.width/2,
-      height: Math.random()*this.props.height/4+this.props.height/2+140,
+      width: this.props.width,
+      height: this.props.height,
       top: 0,
       left: 0,
       alpha: 1,
@@ -132,4 +146,4 @@ var Bubble = React.createClass({
   }
 });
 
-module.exports = Bubble;
+module.exports = Star4page5;

@@ -45,6 +45,15 @@ app.get('/', function(req, res) {
     var template = jade.compile(tmpl, 'utf-8');
     res.send(template(user));
 });
+var tmpl = fs.readFileSync(serverConfig.rootPath+'apps/timeline/index.jade');
+var template = jade.compile(tmpl, 'utf-8');
+var data = JSON.parse(fs.readFileSync(serverConfig.rootPath + 'apps/data/em_data.json','utf8'));
+app.get('/:uid', function(req, res) {
+    var uid = req.params.uid;
+    var user = data[uid];
+    console.log(user);
+    res.send(template(user));
+});
 app.use(express.static(serverConfig.rootPath));
 server.listen(8000);
 console.log('running 8000');

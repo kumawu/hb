@@ -4,16 +4,17 @@
 
 var React = require('react');
 var ReactCanvas = require('react-canvas');
-var Page = require('./components/Page');
+// var Page = require('./components/Page');
 var Page1 = require('./components/Page1');
 var Page2 = require('./components/Page2');
 var Page3 = require('./components/Page3');
 var Page4 = require('./components/Page4');
+var Page5 = require('./components/Page5');
 // var articles = require('../common/data');
 
 var Surface = ReactCanvas.Surface;
-var ListView = ReactCanvas.ListView;
-var pages = [Page1,Page2,Page3,Page4];
+var ListView = ReactCanvas.ListView;//出生、入职、挫折、成长、生日
+var pages = [Page1,Page5,Page3,Page2,Page4];//page1 出生，page2 成长，page3 挫折，page4 生日，page5 入职
 var ANIMATIONON = true;
 var App = React.createClass({
   
@@ -41,8 +42,10 @@ var App = React.createClass({
     var pageScrollTop = pageIndex * this.getPageHeight() - scrollTop;
     var widthRatio = size.width/1242;
     var heightRatio = size.height/2208;
+    var Temp = pages[pageIndex];
+
     return (
-      <Page
+      <Temp
         width={size.width}
         height={size.height}
         widthRatio={widthRatio}

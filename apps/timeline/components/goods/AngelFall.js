@@ -13,6 +13,7 @@ var StarsNum = 20;
 var AFitems = [];
 var blinks = [];//starItemIndex
 var blinkNum = 3;
+var timer;
 var AngelFall = React.createClass({
   mixins: [tweenState.Mixin],
   getInitialState: function () {
@@ -46,18 +47,14 @@ var AngelFall = React.createClass({
     this.setState({starsTop:_top});
     //待检测是否有重复
     // this._pendingAnimationFrame = requestAnimationFrame(this.changeAfTop);
-    setTimeout(this.changeAfTop,40);
-    this.regStop();
+    timer = setTimeout(this.changeAfTop,40);
+    setTimeout(this.stopAni,50000);
   },
-  regStop:function(){
-    var self = this;
-    setTimeout(function() {
-      self.stopAni();
-    }, 50000);
-  },
+
   stopAni:function(){
     console.log('AF stop ani');
-    cancelAnimationFrame(this._pendingAnimationFrame);
+    // cancelAnimationFrame(this._pendingAnimationFrame);
+    clearTimeout(timer);
     // items = [];
   },
   componentWillUnmount:function(){
@@ -71,12 +68,11 @@ var AngelFall = React.createClass({
     console.log('af update',this.props.scrollTop,this.firstTime);
     if (this.props.scrollTop == 0 && this.firstTime == true && this.props.ANIMATIONON) {
       for (var i = 0; i < StarsNum; i++) {
-      AFitems.push(this.renderStar('blink'+i));
-      this.changeAfTop();
-    }
+        AFitems.push(this.renderStar('blink' + i));
+
+      }
       this.firstTime = false;
-      
-      // setTimeout(this.changeAfTop,500);
+      this.changeAfTop();
       console.log('af begin changeAfTop');
     }
   },

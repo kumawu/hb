@@ -21,13 +21,16 @@ var TEXT_ALPHA_SPEED_IN_MULTIPLIER = 2.6;
 var IMAGE_LAYER_INDEX = 1;
 var TEXT_LAYER_INDEX = 2;
 var wordList = [];
-var backgoundImage = '/apps/timeline/components/res/page3.jpg';
+var backgroundImage = '/apps/timeline/components/res/page3.jpg';
 // var Stars = require('/apps/timeline/components/goods/Stars');
+var MINALPHA = 0.3;
+var delayTime =1000;
 var Page3 = React.createClass({
   mixins: [tweenState.Mixin],
   getInitialState: function () {
     return {
-      alpha:0.5
+      water1Alpha:1,
+      water2Alpha:MINALPHA
     };
   },
 
@@ -43,25 +46,54 @@ var Page3 = React.createClass({
     if (this.props.scrollTop == 0 && this.firstTime == true) {
       var self = this;
       this.firstTime = false;
-      console.log('This is page3 call tweenState');
-      // this.tweenState('alpha', {
-      //   easing: tweenState.easingTypes.easeInOutQuad,
-      //   duration: 500,
-      //   delay: 100,
-      //   endValue: 20
-      // });
+      
+      
+      if(this.props.ANIMATIONON){
+        console.log('This is page3 call tweenState');
+        this.waterDecoration();
+      }
     }
+  },
+  waterDecoration : function(){
+    var step = 1500;
+    var self = this;
+    this.tweenState('water1Alpha', {
+      duration: step,
+      endValue: MINALPHA,
+      onEnd:function(){
+        self.tweenState('water1Alpha', {
+          delay:delayTime,
+          duration: step,
+          endValue: 1
+        });
+      }
+    });
+    this.tweenState('water2Alpha', {
+      duration: step,
+      endValue: 1,
+      onEnd:function(){
+        self.tweenState('water2Alpha', {
+          delay:delayTime,
+          duration: step,
+          endValue: MINALPHA
+        });
+      }
+    });
+    this.timer = setTimeout(this.waterDecoration,step*2+delayTime);
   },
   componentDidMount: function() {
     this.firstTime = true;
   },
 
   componentWillUnmount:function(){
+    clearTimeout(this.timer);
   },
   componentWillMount: function () {
-  //   // Pre-compute headline/excerpt text dimensions.
     this.article = {words:'旅 途 中 难 免 遇 到 波 折\nBe yourself\n做 最 好 的 自 己\n愿 无 岁 月 可 以 回 头'}
-    this.formatArticle(this.article.words)
+    if(wordList.length == 0){
+      this.formatArticle(this.article.words)
+    }
+  //   // Pre-compute headline/excerpt text dimensions.
   },
  
   render: function () {
@@ -69,13 +101,26 @@ var Page3 = React.createClass({
     var groupStyle = this.getGroupStyle();
     var imageStyle = this.getImageStyle();
     var pageIndex = this.props.pageIndex;
-    // 
+    var water1Style =  this.getImageStyle();
+    var water2Style =  this.getImageStyle();
+
+    water1Style.alpha = this.getTweeningValue('water1Alpha');
+    water1Style.zIndex = 3;
+    water1Style.backgroundColor = '#000';
+    water2Style.zIndex = 3;
+    water2Style.alpha = this.getTweeningValue('water2Alpha');
+    
+        //   <Image style={imageStyle} src={backgroundImage} fadeIn={true} useBackingStore={true} />
     return (
       <Group style={groupStyle}>
-        <Image style={imageStyle} src={backgoundImage} fadeIn={true} useBackingStore={true} />
+         <Group style={groupStyle}>
+          <Image style={water1Style} src='/apps/timeline/components/res/page3_1.jpg' fadeIn={true} useBackingStore={false} />
+          <Image style={water2Style} src='/apps/timeline/components/res/page3_2.jpg' fadeIn={true} useBackingStore={false} />
+        </Group>
         <Bubble
           width={this.props.width}
           height={this.props.height}
+          ANIMATIONON={this.props.ANIMATIONON}
           scrollTop={this.props.scrollTop} />
         <Body
           widthRatio = {this.props.widthRatio}
@@ -110,12 +155,9 @@ var Page3 = React.createClass({
       top: 0,
       left: 0,
       width: this.props.width,
-      height: this.props.height
+      height: this.props.height,
+      backgroundColor:"#3e567e",
     };
-  },
-
-  getImageHeight: function () {
-    return Math.round(this.props.height/1.5);
   },
 
   getImageStyle: function () {
@@ -124,14 +166,12 @@ var Page3 = React.createClass({
       left: 0,
       width: this.props.width,
       height: this.props.height,
-      backgroundColor: '#eee',
       zIndex: IMAGE_LAYER_INDEX,
-      alpha: 1
+      alpha: 1,
     };
   },
 
   getTextGroupStyle: function () {
-    var imageHeight = this.getImageHeight();
     var translateY = 0;
     var alphaMultiplier = (this.props.scrollTop <= 0) ? -TEXT_ALPHA_SPEED_OUT_MULTIPLIER : TEXT_ALPHA_SPEED_IN_MULTIPLIER;
     var alpha = 1 - (this.props.scrollTop / this.props.height) * alphaMultiplier;
@@ -160,7 +200,7 @@ var Page3 = React.createClass({
       fontSize: CONTENT_INSET,
       lineHeight: LINEHEIGHT,
       top: 180+(index+1)*LINEHEIGHT,//this.getTweeningValue('projectTop')+
-      zIndex: 2,
+      zIndex: 4,
       fontFace: FontFace('Georgia, serif'),
       textAlign:'center',
       textBaseline :'middle'

@@ -22,7 +22,7 @@ var IMAGE_LAYER_INDEX = 1;
 var TEXT_LAYER_INDEX = 2;
 var projects = [];
 var honors= [];
-var backgoundImage = '/apps/timeline/components/res/page2.jpg';
+var backgroundImage = '/apps/timeline/components/res/page2.jpg';
 // var Stars = require('/apps/timeline/components/goods/Stars');
 var Page2 = React.createClass({
   mixins: [tweenState.Mixin],
@@ -78,7 +78,7 @@ var Page2 = React.createClass({
     // 
     return (
       <Group style={groupStyle}>
-        <Image style={imageStyle} src={backgoundImage} fadeIn={true} useBackingStore={true} />
+        <Image style={imageStyle} src={backgroundImage} fadeIn={true} useBackingStore={true} />
         <AngelFall
           ANIMATIONON={this.props.ANIMATIONON}
           width={this.props.width}

@@ -20,7 +20,7 @@ var TEXT_ALPHA_SPEED_IN_MULTIPLIER = 2.6;
 var IMAGE_LAYER_INDEX = 1;
 var TEXT_LAYER_INDEX = 2;
 var rootPath = '/apps/timeline/components';
-var backgoundImage = rootPath+'/res/starry.jpg';
+var backgroundImage = rootPath+'/res/starry.jpg';
 var Stars = require('./goods/Stars');
 var Angel = require('./goods/Angel');
 var Head = require('./goods/Head');
@@ -39,7 +39,6 @@ var Page1 = React.createClass({
   propTypes: {
     width: React.PropTypes.number.isRequired,
     height: React.PropTypes.number.isRequired,
-    article: React.PropTypes.object.isRequired,
     scrollTop: React.PropTypes.number.isRequired,
     pageIndex: React.PropTypes.number.isRequired
   },
@@ -95,7 +94,7 @@ var Page1 = React.createClass({
 
     return (
       <Group style={groupStyle}>
-        <Image style={imageStyle} src={backgoundImage} fadeIn={true} useBackingStore={true} />
+        <Image style={imageStyle} src={backgroundImage} fadeIn={true} useBackingStore={true} />
         <Stars
           useBackingStore={true}
           width={this.props.width}
