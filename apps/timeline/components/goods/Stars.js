@@ -43,7 +43,7 @@ var Stars = React.createClass({
       _lock = false;
     }
     var _newValue = increase?_a+_step:_a-_step;
-    console.log('This is stars call setState');
+    // console.log('This is stars call setState');
     this.setState({starsAlpha:_newValue,increaseLock:_lock});
     //待检测是否有重复
     // this._pendingAnimationFrame = requestAnimationFrame(this.changeAlpha);
@@ -78,7 +78,7 @@ var Stars = React.createClass({
     if(this.props.scrollTop!==0){
       this.stopAni();
     }
-    console.log('this is Stars rendering',this.state);
+    // console.log('this is Stars rendering',this.state);
     var _a = this.state.starsAlpha;
     if(items.length != 0){
       if (!this.state.increaseLock) {

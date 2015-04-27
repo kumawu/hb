@@ -102,7 +102,7 @@ var Star = React.createClass({
     this.height = 26 * this.props.heightRatio;
     console.log('star getImageStyle',this.props.widthRatio,this.props.heightRatio);
     return {
-      top: 1465*this.props.heightRatio,//this.getTweeningValue('top'),
+      top: this.props.height*0.664,//1465*this.props.heightRatio,
       left: 723*this.props.widthRatio,
       width: this.width,
       height: this.height,

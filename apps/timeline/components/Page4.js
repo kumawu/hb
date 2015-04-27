@@ -71,11 +71,13 @@ var Page4 = React.createClass({
     console.log('name',name);
     var groupStyle = this.getGroupStyle();
     var imageStyle = this.getImageStyle();
-    var logoStyle = this.getLogoStyle();
+
     var textStyle = this.getTextStyle();
     var text2Style = this.getTextStyle();
     text2Style.top += 30*_temp.length;
     text2Style.fontSize =CONTENT_INSET; 
+    var logoStyle = this.getLogoStyle();
+    logoStyle.top = text2Style.top + 4*CONTENT_INSET+3*LINEHEIGHT;
     var pageIndex = this.props.pageIndex;
     return (
       <Group style={groupStyle}>
@@ -122,7 +124,7 @@ var Page4 = React.createClass({
   getLogoStyle : function(){
     var _w = 70*this.props.widthRatio;
     return {
-      top: 1776*this.props.heightRatio,
+      top: 1776*this.props.heightRatio,//this.props.height/2-4*CONTENT_INSET-3*LINEHEIGHT +(index+1)*LINEHEIGHT
       left: this.props.width/2-_w/2,
       width: _w,
       height: 57*this.props.heightRatio,

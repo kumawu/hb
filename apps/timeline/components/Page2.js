@@ -74,6 +74,7 @@ var Page2 = React.createClass({
     console.log('this is Page2 rendering',this.state);
     var groupStyle = this.getGroupStyle();
     var imageStyle = this.getImageStyle();
+    var whaleStyle = this.getWhaleStyle();
     var pageIndex = this.props.pageIndex;
     // 
     return (
@@ -96,6 +97,7 @@ var Page2 = React.createClass({
           <Text style={this.getTitleStyle({top:200})}>获奖情况</Text>
           {honors}
         </Group>
+        <Image style={whaleStyle} src='/apps/timeline/components/res/whale.png' fadeIn={true} useBackingStore={true} />
       </Group>
     );
   },
@@ -140,6 +142,17 @@ var Page2 = React.createClass({
       left: 0,
       width: this.props.width,
       height: this.props.height,
+      backgroundColor: '#eee',
+      zIndex: IMAGE_LAYER_INDEX,
+      alpha: 1
+    };
+  },
+  getWhaleStyle: function () {
+    return {
+      top: this.props.height*0.6,
+      left: 0,
+      width: this.props.width,
+      height: 914*this.props.heightRatio,
       backgroundColor: '#eee',
       zIndex: IMAGE_LAYER_INDEX,
       alpha: 1

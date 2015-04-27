@@ -199,7 +199,7 @@ var Page3 = React.createClass({
       height:this.props.height,
       fontSize: CONTENT_INSET,
       lineHeight: LINEHEIGHT,
-      top: 180+(index+1)*LINEHEIGHT,//this.getTweeningValue('projectTop')+
+      top: this.props.height/2-4*CONTENT_INSET-3*LINEHEIGHT +(index+1)*LINEHEIGHT,//this.getTweeningValue('projectTop')+
       zIndex: 4,
       fontFace: FontFace('Georgia, serif'),
       textAlign:'center',
