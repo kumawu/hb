@@ -56,7 +56,7 @@ var Page1 = React.createClass({
     console.log('Page1 update',this.props.scrollTop);
   },
   componentWillMount: function () {
-      var constellationMapping = {'Taurus':' 金牛座'};
+      var constellationMapping = {'Taurus':' 金牛座','Gemini':' 双子座'.'Aries':' 白羊座'};
   //   // Pre-compute headline/excerpt text dimensions.
       this.article = {name:$CONFIG['uname'],constellation:$CONFIG['constellation']+constellationMapping[$CONFIG['constellation']],desc:$CONFIG['birthyear']+'年'+$CONFIG['birthmonth']+'月'+$CONFIG['birthday']+'日， 夜空中诞生了一颗新星， 飘摇中落到了微博的树枝上。'};
 
