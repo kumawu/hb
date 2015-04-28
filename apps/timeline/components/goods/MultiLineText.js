@@ -72,7 +72,7 @@ var MultiLineText = React.createClass({
       height:this.props.height,
       fontSize: CONTENT_INSET,
       lineHeight: LINEHEIGHT,
-      top: 180+(index+1)*LINEHEIGHT,//this.getTweeningValue('projectTop')+
+      top: this.props.height/5+(index+1)*LINEHEIGHT,//this.getTweeningValue('projectTop')+
       zIndex: 5,
       fontFace: FontFace('Georgia, serif'),
       textAlign:'center',

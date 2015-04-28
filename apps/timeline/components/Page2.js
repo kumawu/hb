@@ -63,11 +63,21 @@ var Page2 = React.createClass({
   },
   componentWillMount: function () {
     console.log('page2 will mount');
+
+      // "project": [{
+      //       "duty": "爱玛客 产品设计"
+      //   }, {
+      //       "duty": "员工关怀 数据录入"
+      //   }, {
+      //       "duty": "粉丝服务平台 啥都没干"
+      //   }],
   //   // Pre-compute headline/excerpt text dimensions.
-      this.article = {name:'王晓霞',project:'活动&卡券 开发工作\n微博粉丝服务平台 前端开发工作\n  微博粉丝服务平台商业化 前端开发与后台设计',honor:'2015-1 公司优秀员工\n2015-1 公司优秀员工'};
+      this.article = {project:$CONFIG['project'],honor:$CONFIG['reward']};
       
       this.formatArticle({type:'p',data:this.article.project});
-      this.formatArticle({type:'h',data:this.article.honor});
+      if(this.article.honor!=0){
+        this.formatArticle({type:'h',data:this.article.honor});
+      }
   },
  
   render: function () {
@@ -77,9 +87,12 @@ var Page2 = React.createClass({
     var whaleStyle = this.getWhaleStyle();
     var pageIndex = this.props.pageIndex;
     // 
+    var rewardStyle = this.getTitleStyle();
+    rewardStyle.alpha = 0;
     return (
       <Group style={groupStyle}>
         <Image style={imageStyle} src={backgroundImage} fadeIn={true} useBackingStore={true} />
+        <Image style={whaleStyle} src='/apps/timeline/components/res/whale.png' fadeIn={true} useBackingStore={true} />
         <AngelFall
           ANIMATIONON={this.props.ANIMATIONON}
           width={this.props.width}
@@ -94,10 +107,9 @@ var Page2 = React.createClass({
         <Group style={this.getTextGroupStyle()}  useBackingStore={true}>
           <Text style={this.getTitleStyle({top:100})}>项目经历</Text>
           {projects}
-          <Text style={this.getTitleStyle({top:200})}>获奖情况</Text>
+          <Text style={rewardStyle}>获奖情况</Text>
           {honors}
         </Group>
-        <Image style={whaleStyle} src='/apps/timeline/components/res/whale.png' fadeIn={true} useBackingStore={true} />
       </Group>
     );
   },
@@ -148,13 +160,13 @@ var Page2 = React.createClass({
     };
   },
   getWhaleStyle: function () {
+    var _h = 1010*this.props.heightRatio;
     return {
-      top: this.props.height*0.6,
+      top: this.props.height - _h,
       left: 0,
       width: this.props.width,
-      height: 914*this.props.heightRatio,
-      backgroundColor: '#eee',
-      zIndex: IMAGE_LAYER_INDEX,
+      height: _h,
+      zIndex: 5,
       alpha: 1
     };
   },

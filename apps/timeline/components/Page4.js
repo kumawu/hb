@@ -13,7 +13,7 @@ var FontFace = ReactCanvas.FontFace;
 var measureText = ReactCanvas.measureText;
 
 var CONTENT_INSET = 12;
-var LINEHEIGHT = 26;
+var LINEHEIGHT = 16;
 var TEXT_SCROLL_SPEED_MULTIPLIER = 0.6;
 var TEXT_ALPHA_SPEED_OUT_MULTIPLIER = 1.25;
 var TEXT_ALPHA_SPEED_IN_MULTIPLIER = 2.6;
@@ -75,7 +75,8 @@ var Page4 = React.createClass({
     var textStyle = this.getTextStyle();
     var text2Style = this.getTextStyle();
     text2Style.top += 30*_temp.length;
-    text2Style.fontSize =CONTENT_INSET; 
+    text2Style.fontSize =CONTENT_INSET;
+    text2Style.lineHeight =LINEHEIGHT; 
     var logoStyle = this.getLogoStyle();
     logoStyle.top = text2Style.top + 4*CONTENT_INSET+3*LINEHEIGHT;
     var pageIndex = this.props.pageIndex;
@@ -143,7 +144,7 @@ var Page4 = React.createClass({
       shadowColor:'#fff',
       color:'#fff',
       fontSize: CONTENT_INSET*1.5,
-      lineHeight: LINEHEIGHT,
+      lineHeight: LINEHEIGHT*1.5,
       fontFace: FontFace('Georgia, serif'),
       textAlign:'center',
       textBaseline :'middle'

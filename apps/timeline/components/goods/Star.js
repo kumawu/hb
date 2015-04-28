@@ -49,7 +49,7 @@ var Star = React.createClass({
   componentDidUpdate:function(){
   },
   render: function() {
-    // console.log('this is Star rendering');
+    // console.log('this is Star rendering');★
     var imageStyle = this.getImageStyle();
     return (
       <Image style={imageStyle} src='/apps/timeline/components/res/star.png' fadeIn={true} useBackingStore={true} />
@@ -102,7 +102,7 @@ var Star = React.createClass({
     this.height = 26 * this.props.heightRatio;
     console.log('star getImageStyle',this.props.widthRatio,this.props.heightRatio);
     return {
-      top: this.props.height*0.664,//1465*this.props.heightRatio,
+      top: this.props.height*0.62,//1465*this.props.heightRatio,
       left: 723*this.props.widthRatio,
       width: this.width,
       height: this.height,

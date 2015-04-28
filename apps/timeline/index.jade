@@ -12,7 +12,17 @@ html
       var $CONFIG = {};
       $CONFIG['uname'] = '#{name}';
       $CONFIG['head'] = '#{headUrl}';
+      $CONFIG['male'] = '#{male}';
+      $CONFIG['birthyear'] = '#{birthyear}';
+      $CONFIG['birthmonth'] = '#{birthmonth}';
+      $CONFIG['birthday'] = '#{birthday}';
+      $CONFIG['constellation'] = '#{constellation}';
+      $CONFIG['onboardyear'] = '#{onboardyear}';
+      $CONFIG['onboardmonth'] = '#{onboardmonth}';
+      $CONFIG['onboardday'] = '#{onboardday}';
+      $CONFIG['project'] = '#{project}';
+      $CONFIG['reward'] = '#{reward}';
   body
     #main
     script(src='/build/timeline.js')
-    audio(src="/apps/timeline/components/res/bgm.mp3" autoplay="autoplay" loop="loop")
+    audio(id="music" src="/apps/timeline/components/res/bgm.mp3" autoplay="autoplay" loop="loop")

@@ -23,7 +23,7 @@ var backgroundImage = rootPath+'/res/page5.jpg';
 var Star4page5 = require('./goods/Star4page5');
 var FloatMan = require('./goods/FloatMan');
 var MultiLineText = require('./goods/MultiLineText');
-var dayNum = 388;
+var dayNum = parseInt(Math.abs(new Date()-new Date($CONFIG['onboardyear']+'/'+$CONFIG['onboardmonth']+'/'+$CONFIG['onboardday'])) / 1000 / 60 / 60 /24);
 var Page5 = React.createClass({
   mixins: [tweenState.Mixin],
   getInitialState: function () {
@@ -68,7 +68,7 @@ var Page5 = React.createClass({
 
   render: function () {
     console.log('this is Page5 rendering',this.props.width);
-    this.article = {words:'2014年4月5日\n正式加入商业产品部\n宇宙之大  能够相遇  已是难得\n这是第'+Math.ceil(this.getTweeningValue('days'))+'天'};
+    this.article = {words:$CONFIG['onboardyear']+'年'+$CONFIG['onboardmonth']+'月'+$CONFIG['onboardday']+'日\n正式加入商业产品部\n宇宙之大  能够相遇  已是难得\n这是第'+Math.ceil(this.getTweeningValue('days'))+'天'};
     var groupStyle = this.getGroupStyle();
     var imageStyle = this.getImageStyle();
     

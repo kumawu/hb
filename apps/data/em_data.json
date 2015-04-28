@@ -6,19 +6,13 @@
         "birthyear": "1987",
         "birthmonth": "4",
         "birthday": "26",
-        "constellation": "Aries",
+        "constellation": "Taurus",
         "onboardyear": "2013",
         "onboardmonth": "11",
         "onboardday": "28",
         "headUrl":"http://tp2.sinaimg.cn/2255839425/180/5607488841/1",
-        "project": [{
-            "duty": "爱玛客 产品设计"
-        }, {
-            "duty": "员工关怀 数据录入"
-        }, {
-            "duty": "粉丝服务平台 啥都没干"
-        }],
-        "reward": []
+        "project": "爱玛客 产品设计\\n员工关怀 数据录入\\n粉丝服务平台 啥都没干",
+        "reward": ""
     },
     "1906864801": {
         "name": "王宏",
@@ -27,7 +21,7 @@
         "birthyear": "1987",
         "birthmonth": "5",
         "birthday": "1",
-        "constellation": "Aries",
+        "constellation": "Taurus",
         "onboardyear": "2013",
         "onboardmonth": "11",
         "onboardday": "28",

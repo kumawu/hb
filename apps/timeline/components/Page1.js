@@ -56,10 +56,10 @@ var Page1 = React.createClass({
     console.log('Page1 update',this.props.scrollTop);
   },
   componentWillMount: function () {
+      var constellationMapping = {'Taurus':' 金牛座'};
   //   // Pre-compute headline/excerpt text dimensions.
-      this.article = {name:window.$CONFIG['uname'],constellation:'金牛座',desc:'1992年11月13日， 夜空中诞生了一颗新星， 飘摇中落到了微博的树枝上。'};
+      this.article = {name:$CONFIG['uname'],constellation:$CONFIG['constellation']+constellationMapping[$CONFIG['constellation']],desc:$CONFIG['birthyear']+'年'+$CONFIG['birthmonth']+'月'+$CONFIG['birthday']+'日， 夜空中诞生了一颗新星， 飘摇中落到了微博的树枝上。'};
 
-    //this.calTextMetric();
   },
   fixTextPostion:function(){
 
@@ -84,17 +84,19 @@ var Page1 = React.createClass({
     var pageIndex = this.props.pageIndex;
     
     var nameStyle = this.getNameStyle();
+    var musicIconStyle = this.getMusicIconStyle();
     // nameStyle.left = this.props.width/2-this.nameMetrics.width/2;
     // nameStyle.width = this.nameMetrics.width;
     // nameStyle.height = this.nameMetrics.height;
 
     var constellationStyle = this.getConstellationStyle();
     var descStyle = this.getDescStyle();
-    console.log('ratiooooooooooo',this.props.width,this.props.height,this.props.widthRatio,this.props.heightRatio);
+    // console.log('ratiooooooooooo',this.props.width,this.props.height,this.props.widthRatio,this.props.heightRatio);
 
     return (
       <Group style={groupStyle}>
         <Image style={imageStyle} src={backgroundImage} fadeIn={true} useBackingStore={true} />
+        <Image style={musicIconStyle} src='/apps/timeline/components/res/musicoff.png' fadeIn={true} useBackingStore={true} />
         <Stars
           useBackingStore={true}
           width={this.props.width}
@@ -158,6 +160,17 @@ var Page1 = React.createClass({
       width: this.props.width,
       height: this.props.height,
       backgroundColor: '#eee',
+      zIndex: IMAGE_LAYER_INDEX,
+      alpha: 1
+    };
+  },
+
+  getMusicIconStyle: function () {
+    return {
+      top: 49*this.props.heightRatio,
+      left: 1111*this.props.widthRatio,
+      width: 80*this.props.widthRatio,
+      height: 80*this.props.heightRatio,
       zIndex: IMAGE_LAYER_INDEX,
       alpha: 1
     };

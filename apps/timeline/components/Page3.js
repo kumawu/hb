@@ -55,7 +55,7 @@ var Page3 = React.createClass({
     }
   },
   waterDecoration : function(){
-    var step = 1500;
+    var step = 1250;
     var self = this;
     this.tweenState('water1Alpha', {
       duration: step,
