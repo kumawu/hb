@@ -17,14 +17,14 @@ var Body = React.createClass({
     };
   },
   componentWillMount: function() {
-    console.log('body componentWillMount');
+    // console.log('body componentWillMount');
   },
   componentDidUpdate:function(){
-    console.log('float update',this.props.scrollTop,this.firstTime);
+    // console.log('float update',this.props.scrollTop,this.firstTime);
     if (this.props.scrollTop == 0 && this.firstTime == true) {
       var self = this;
       this.firstTime = false;
-      console.log('This is floatman call tweenState');
+      // console.log('This is floatman call tweenState');
       this.tweenState('left', {
         easing: tweenState.easingTypes.easeInOutQuad,
         duration: 1000,
@@ -37,7 +37,7 @@ var Body = React.createClass({
     this.firstTime = true;
   },
   render: function() {
-    console.log('this is body rendering');
+    // console.log('this is body rendering');
     var imageStyle = this.getImageStyle();
     return (
       <Image style={imageStyle} src='http://img.t.sinajs.cn/t4/apps/hb/static/img/float.png' fadeIn={true} useBackingStore={true} />

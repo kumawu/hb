@@ -20,13 +20,13 @@ var Bubble = React.createClass({
   componentWillMount: function() {
     for (var i = 0; i < StarsNum; i++) {
       var titleStyle = this.getTitleStyle();
-      console.log('calculating bubble postion');
+      // console.log('calculating bubble postion');
       items.push(this.renderStar('bubble'+i, titleStyle));
     }
-    console.log('bubble willMount');
+    // console.log('bubble willMount');
   },
   changeTop : function(){
-    console.log('bubble change Top',this.props.scrollTop);
+    // console.log('bubble change Top',this.props.scrollTop);
 
     var self = this;
     var _top = 0;
@@ -37,12 +37,12 @@ var Bubble = React.createClass({
         item.props.style.alpha = 0;
         _top = Math.random()*self.props.height/5+self.props.height/2;
       }
-      console.log('bubble items',_top,item.props.style.top);
+      // console.log('bubble items',_top,item.props.style.top);
       item.props.style.top = _top;
       
     });
     
-    console.log('This is Bubble call setState');
+    // console.log('This is Bubble call setState');
     this.setState({starsTop:_top});
     //待检测是否有重复
     // this._pendingAnimationFrame= requestAnimationFrame(this.changeTop);
@@ -51,31 +51,31 @@ var Bubble = React.createClass({
   },
  
   stopAni:function(){
-    console.log('bubble stop ani');
+    // console.log('bubble stop ani');
     clearTimeout(timer);
     // cancelAnimationFrame(this._pendingAnimationFrame);
   },
   componentWillUnmount:function(){
-    console.log('bubble unmount');
+    // console.log('bubble unmount');
     this.stopAni();
     items=[];
   },
   componentDidMount: function() {
     this.firstTime = true;
-    console.log('bubble did mount');
+    // console.log('bubble did mount');
   },
   componentDidUpdate:function(){
     // console.log('bubble update',this.props.ANIMATIONON,this.props.scrollTop,this.firstTime);
     if (this.props.scrollTop == 0 && this.firstTime == true && this.props.ANIMATIONON) {
       this.firstTime = false;
-      console.log('bubble change Top begin');
+      // console.log('bubble change Top begin');
       this.changeTop();
     }
   },
   render: function() {
     // console.log('This Bubble rendering.',items,(items.length != 0)?items[0].props.style.top:0,this.props.scrollTop);
     if(this.props.scrollTop!==0){
-      console.log('bubble begin scroll');
+      // console.log('bubble begin scroll');
       this.stopAni();
     }
     return (

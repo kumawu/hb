@@ -84,4 +84,19 @@ var App = React.createClass({
 
 });
 
-React.render(<App />, document.getElementById('main'));
+(function(){
+  var imgs = ["http://img.t.sinajs.cn/t4/apps/hb/static/img/starry.jpg","http://img.t.sinajs.cn/t4/apps/hb/static/img/page2.jpg","http://img.t.sinajs.cn/t4/apps/hb/static/img/page3.jpg","http://img.t.sinajs.cn/t4/apps/hb/static/img/page4.jpg","http://img.t.sinajs.cn/t4/apps/hb/static/img/page5.jpg"];
+  var loaded = 0;
+  var imgCache = [];
+    for (var i=0, l=imgs.length;i<l; i++){
+      imgCache[i]=new Image();
+      imgCache[i].src=imgs[i];
+      imgCache[i].onload=function(){
+        loaded += 1;
+        if(loaded == imgs.length){
+          React.render(<App />, document.getElementById('main'));
+        }
+      }
+    }
+})();
+

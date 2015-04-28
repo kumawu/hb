@@ -42,7 +42,7 @@ var Lantern = React.createClass({
     var self = this;
     var randomIndex = Math.floor(Math.random() * lanternNum);
     var randomTime = Math.random() * 1000;
-    console.log('lantern randomIndex',randomIndex);
+    // console.log('lantern randomIndex',randomIndex);
     if (!lanternItems[randomIndex].flag) {
       // console.log('lantern randomIndex call alpha for',randomIndex);
       lanternItems[randomIndex].flag = true;
@@ -104,7 +104,7 @@ var Lantern = React.createClass({
     lanternElement = lanternItems.map(this.renderLanterns);
     // console.log('This is Lantern rendering',this.state,lanternItems.length);
     // lanternElement = lanternItems.map(this.renderLanterns);
-    console.log('lantern after rendering lanternElement',lanternElement);
+    // console.log('lantern after rendering lanternElement',lanternElement);
     return (
       <Group style={groupStyle}>
         {lanternElement}
@@ -122,7 +122,7 @@ var Lantern = React.createClass({
   // Styles
   // ======
   getLanternStyle:function(index){
-    console.log('getLanternStyle',index,this.getTweeningValue('alpha'+index));
+    // console.log('getLanternStyle',index,this.getTweeningValue('alpha'+index));
     return {
       top: 0,
       left: 0,

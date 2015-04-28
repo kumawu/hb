@@ -20,11 +20,11 @@ var Star4page5 = React.createClass({
     for (var i = 0; i < StarsNum; i++) {
       var titleStyle = this.getTitleStyle();
 
-      console.log('calculating star4page5 postion',titleStyle);
+      // console.log('calculating star4page5 postion',titleStyle);
       items.push(this.renderStar('star4page5'+i, titleStyle));
     }
     this.firstTime = true;
-    console.log('star4page5 willMount');
+    // console.log('star4page5 willMount');
   },
   changeDirection : function(d,step){
     var attr = 'top';
@@ -36,7 +36,7 @@ var Star4page5 = React.createClass({
       attr = 'left';
       _step = step;
     }
-    console.log('Star4page5 change ',attr);
+    // console.log('Star4page5 change ',attr);
 
     var self = this;
     var _newValue = 0;
@@ -47,12 +47,12 @@ var Star4page5 = React.createClass({
         // item.props.style.alpha = 0;
         _newValue = self.props.width;
       }
-      console.log('Star4page5 items',attr,_newValue,item.props.style[attr]);
+      // console.log('Star4page5 items',attr,_newValue,item.props.style[attr]);
       item.props.style[attr] = _newValue;
       
     });
     
-    console.log('This is star4page5 call setState');
+    // console.log('This is star4page5 call setState');
     this.setState({starsTop:_newValue});
     //待检测是否有重复
     this._pendingAnimationFrame= requestAnimationFrame(function(){
@@ -68,27 +68,27 @@ var Star4page5 = React.createClass({
     setTimeout(this.stopAni, 50000);
   },
   stopAni:function(){
-    console.log('star4page5 stop ani');
+    // console.log('star4page5 stop ani');
     cancelAnimationFrame(this._pendingAnimationFrame);
   },
   componentWillUnmount:function(){
-    console.log('star4page5 unmount');
+    // console.log('star4page5 unmount');
     this.stopAni();
     items=[];
   },
   componentDidMount: function() {
     this.firstTime = true;
-    console.log('star4page5 did mount');
+    // console.log('star4page5 did mount');
   },
   componentDidUpdate:function(){
-    console.log('star4page5 update');
+    // console.log('star4page5 update');
     if (this.props.scrollTop == 0 && this.firstTime == true && this.props.ANIMATIONON) {
       this.firstTime = false;
       this.changeDirection('left',2);
     }
   },
   render: function() {
-    console.log('This Star4page5 rendering.',items,(items.length != 0)?items[0].props.style.top:0,this.props.scrollTop);
+    // console.log('This Star4page5 rendering.',items,(items.length != 0)?items[0].props.style.top:0,this.props.scrollTop);
     if(this.props.scrollTop!==0){
       this.stopAni();
     }

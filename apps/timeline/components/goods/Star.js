@@ -6,6 +6,7 @@ var React = require('react');
 var ReactCanvas = require('react-canvas');
 var Group = ReactCanvas.Group;
 var tweenState = require('react-tween-state');
+var Text = ReactCanvas.Text;
 var Image = ReactCanvas.Image;
 
 // var Text = ReactCanvas.Text;
@@ -51,8 +52,11 @@ var Star = React.createClass({
   render: function() {
     // console.log('this is Star rendering');★
     var imageStyle = this.getImageStyle();
+    var starStyle = this.getTitleStyle();
+    // <Image style={imageStyle} src='http://img.t.sinajs.cn/t4/apps/hb/static/img/star.png' fadeIn={true} useBackingStore={true} />
     return (
-      <Image style={imageStyle} src='/apps/timeline/components/res/star.png' fadeIn={true} useBackingStore={true} />
+      <Text style={starStyle}>★</Text>
+      
     );
   },
 
@@ -74,10 +78,7 @@ var Star = React.createClass({
       lineHeight: size,
       top: 1465*this.props.heightRatio,
       color: '#ff0',
-      zIndex: 4,
-      fontFace: FontFace('Avenir Next Condensed, Helvetica, sans-serif', null, {
-        weight: 400
-      })
+      zIndex: 4
     };
   },
   getTextGroupStyle: function () {

@@ -11,6 +11,7 @@ var Image = ReactCanvas.Image;
 var Text = ReactCanvas.Text;
 var FontFace = ReactCanvas.FontFace;
 var measureText = ReactCanvas.measureText;
+var MultiLineText = require('./goods/MultiLineText');
 
 var CONTENT_INSET = 12;
 var LINEHEIGHT = 16;
@@ -20,7 +21,7 @@ var TEXT_ALPHA_SPEED_IN_MULTIPLIER = 2.6;
 var IMAGE_LAYER_INDEX = 1;
 var TEXT_LAYER_INDEX = 2;
 var wordList = [];
-var backgroundImage = '/apps/timeline/components/res/page4.jpg';
+var backgroundImage = 'http://img.t.sinajs.cn/t4/apps/hb/static/img/page4.jpg';
 // var Stars = require('/apps/timeline/components/goods/Stars');
 var Page4 = React.createClass({
   mixins: [tweenState.Mixin],
@@ -59,6 +60,7 @@ var Page4 = React.createClass({
   },
   componentWillMount: function () {
   //   // Pre-compute headline/excerpt text dimensions.
+      this.article = {words:'星光依然不够照亮你的前路\n点亮许愿灯为你祝福\n浩瀚的星空，感谢有你相伴'};
   },
  
   render: function () {
@@ -91,9 +93,15 @@ var Page4 = React.createClass({
           width={this.props.width}
           height={this.props.height} />
         <Group style={this.getTextGroupStyle()} useBackingStore={true}>
+          <MultiLineText
+            width={this.props.width}
+            height={this.props.height}//如果没写这些，页面就是空白，但是不会报错，所以需要检查参数
+            data = {this.article.words}
+            initTop ={this.props.height/2.5}
+            scrollTop={this.props.scrollTop} />
           <Text style={textStyle}>{name}</Text>
           <Text style={text2Style}>生 日 快 乐</Text>
-          <Image style={logoStyle} src='/apps/timeline/components/res/weibologo.png' useBackingStore={true} />
+          <Image style={logoStyle} src='http://img.t.sinajs.cn/t4/apps/hb/static/img/weibologo.png' useBackingStore={true} />
         </Group>
       </Group>
     );
@@ -135,16 +143,16 @@ var Page4 = React.createClass({
   },
   getTextStyle: function(){
     return {
-      top: this.props.height/2,
-      left:this.props.width/2 - CONTENT_INSET/2,
-      width: CONTENT_INSET,
-      height: CONTENT_INSET *20,
+      top: this.props.height*3/4,
+      left:this.props.width,
+      width: this.props.width,
+      height: CONTENT_INSET,
       zIndex: TEXT_LAYER_INDEX,
       alpha: 1,
       shadowColor:'#fff',
       color:'#fff',
-      fontSize: CONTENT_INSET*1.5,
-      lineHeight: LINEHEIGHT*1.5,
+      fontSize: CONTENT_INSET,
+      lineHeight: LINEHEIGHT,
       fontFace: FontFace('Georgia, serif'),
       textAlign:'center',
       textBaseline :'middle'

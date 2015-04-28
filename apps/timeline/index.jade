@@ -7,8 +7,6 @@ html
     link(rel='stylesheet', type='text/css', href='/apps/common/examples.css')
     script(src='/apps/common/touch-emulator.js')
     script(type='text/javascript').
-      TouchEmulator();
-    script(type='text/javascript').
       var $CONFIG = {};
       $CONFIG['uname'] = '#{name}';
       $CONFIG['head'] = '#{headUrl}';
@@ -26,3 +24,5 @@ html
     #main
     script(src='/build/timeline.js')
     audio(id="music" src="/apps/timeline/components/res/bgm.mp3" autoplay="autoplay" loop="loop")
+    script(type='text/javascript').
+      TouchEmulator();
