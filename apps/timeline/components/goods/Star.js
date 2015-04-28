@@ -64,19 +64,18 @@ var Star = React.createClass({
   // ======
   
   getTitleStyle: function() {
-    var size = 100;
+    var size = 10;
     return {
       alpha:this.getTweeningValue('alpha'),
-      backgroundColor:'#000',
       shadowColor: '#999',
       shadowBlur:20,
      // borderRadius:size2,//size/2
-      left: 733*this.props.widthRatio,
+      left: 723*this.props.widthRatio,
       width: size,
       height: size,
       fontSize: size,
       lineHeight: size,
-      top: 1465*this.props.heightRatio,
+      top: this.props.height*0.62,
       color: '#ff0',
       zIndex: 4
     };
