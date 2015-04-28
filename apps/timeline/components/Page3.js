@@ -21,7 +21,7 @@ var TEXT_ALPHA_SPEED_IN_MULTIPLIER = 2.6;
 var IMAGE_LAYER_INDEX = 1;
 var TEXT_LAYER_INDEX = 2;
 var wordList = [];
-var backgroundImage = '/apps/timeline/components/res/page3.jpg';
+// var backgroundImage = 'http://img.t.sinajs.cn/t4/apps/hb/static/img/page3.jpg';
 // var Stars = require('/apps/timeline/components/goods/Stars');
 var MINALPHA = 0.3;
 var delayTime =1000;
@@ -114,8 +114,8 @@ var Page3 = React.createClass({
     return (
       <Group style={groupStyle}>
          <Group style={groupStyle}>
-          <Image style={water1Style} src='/apps/timeline/components/res/page3_1.jpg' fadeIn={true} useBackingStore={false} />
-          <Image style={water2Style} src='/apps/timeline/components/res/page3_2.jpg' fadeIn={true} useBackingStore={false} />
+          <Image style={water1Style} src='http://img.t.sinajs.cn/t4/apps/hb/static/img/page3_1.jpg' fadeIn={true} useBackingStore={false} />
+          <Image style={water2Style} src='http://img.t.sinajs.cn/t4/apps/hb/static/img/page3_2.jpg' fadeIn={true} useBackingStore={false} />
         </Group>
         <Bubble
           width={this.props.width}

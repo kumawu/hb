@@ -41,17 +41,11 @@ var server = require('http').Server(app);
 
 app.get('/', function(req, res) {
     var tmpl = fs.readFileSync(serverConfig.rootPath+'apps/timeline/index.jade');
-    var user = {name:"吴侃",head:'http://tp2.sinaimg.cn/2255839425/180/5607488841/1'}
+    var user = {name:"xx",head:'http://tp2.sinaimg.cn/2255839425/180/5607488841/1'}
     var template = jade.compile(tmpl, 'utf-8');
     res.send(template(user));
 });
-app.get('/cart', function(req, res) {
-    var b = fs.readFileSync(serverConfig.rootPath+'server/_temp/cart.jade');
-    var a = jade.compile(b, 'utf-8');
-    var data = JSON.parse(fs.readFileSync(serverConfig.rootPath + 'server/_temp/cart.json','utf8'));
-    res.send(a(data));
-});
-app.use(express.static(serverConfig.rootPath + 'server/_temp/js/'));
+
 var tmpl = fs.readFileSync(serverConfig.rootPath+'apps/timeline/index.jade');
 var template = jade.compile(tmpl, 'utf-8');
 var data = JSON.parse(fs.readFileSync(serverConfig.rootPath + 'apps/data/em_data.json','utf8'));

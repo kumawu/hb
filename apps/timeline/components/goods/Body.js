@@ -40,7 +40,7 @@ var Body = React.createClass({
     console.log('this is body rendering');
     var imageStyle = this.getImageStyle();
     return (
-      <Image style={imageStyle} src='/apps/timeline/components/res/body.png' fadeIn={true} useBackingStore={true} />
+      <Image style={imageStyle} src='http://img.t.sinajs.cn/t4/apps/hb/static/img/body.png' fadeIn={true} useBackingStore={true} />
     );
   },
 

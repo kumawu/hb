@@ -37,7 +37,7 @@ var Tree = React.createClass({
     // console.log('this is Tree rendering');
     var imageStyle = this.getImageStyle();
     return (
-      <Image style={imageStyle} src='/apps/timeline/components/res/tree.png' fadeIn={true} useBackingStore={true} />
+      <Image style={imageStyle} src='http://img.t.sinajs.cn/t4/apps/hb/static/img/tree.png' fadeIn={true} useBackingStore={true} />
     );
   },
 

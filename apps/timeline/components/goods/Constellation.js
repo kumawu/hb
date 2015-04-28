@@ -37,8 +37,9 @@ var Constellation = React.createClass({
   render: function() {
     // console.log('this is constellation rendering');
     var imageStyle = this.getImageStyle();
+    var cons = 'http://img.t.sinajs.cn/t4/apps/hb/static/img/'+$CONFIG["constellation"]+'.png'
     return (
-      <Image style={imageStyle} src='/apps/timeline/components/res/taurus.png' fadeIn={true} useBackingStore={true} />
+      <Image style={imageStyle} src={cons} fadeIn={true} useBackingStore={true} />
     );
   },
 

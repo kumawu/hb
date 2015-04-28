@@ -11,7 +11,7 @@ var lanternNum = 3;
 var lanternItems = [];
 var lanternElement = [];
 var lightItems = [9,4,1];
-var imageUrl = '/apps/timeline/components/res/lantern/';
+var imageUrl = 'http://img.t.sinajs.cn/t4/apps/hb/static/img/lantern/';
 var Lantern = React.createClass({
   mixins: [tweenState.Mixin],
   getInitialState: function () {

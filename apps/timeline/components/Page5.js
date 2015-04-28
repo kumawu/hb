@@ -18,8 +18,7 @@ var TEXT_ALPHA_SPEED_OUT_MULTIPLIER = 1.25;
 var TEXT_ALPHA_SPEED_IN_MULTIPLIER = 2.6;
 var IMAGE_LAYER_INDEX = 1;
 var TEXT_LAYER_INDEX = 2;
-var rootPath = '/apps/timeline/components';
-var backgroundImage = rootPath+'/res/page5.jpg';
+var backgroundImage = 'http://img.t.sinajs.cn/t4/apps/hb/static/img/page5.jpg';
 var Star4page5 = require('./goods/Star4page5');
 var FloatMan = require('./goods/FloatMan');
 var MultiLineText = require('./goods/MultiLineText');
@@ -95,6 +94,7 @@ var Page5 = React.createClass({
           width={this.props.width}
           height={this.props.height}//如果没写这些，页面就是空白，但是不会报错，所以需要检查参数
           data = {this.article.words}
+          initTop = {this.props.height/5}
           scrollTop={this.props.scrollTop} />
       </Group>
     );
