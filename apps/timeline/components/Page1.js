@@ -22,8 +22,10 @@ var TEXT_LAYER_INDEX = 2;
 var backgroundImage = "http://img.t.sinajs.cn/t4/apps/hb/static/img/starry.jpg";
 var Stars = require('./goods/Stars');
 var Angel = require('./goods/Angel');
+var Arrow = require('./goods/Arrow');
 var Head = require('./goods/Head');
 var Ground = require('./goods/Ground');
+var MusicController= require('./goods/MusicController');
 var Tree = require('./goods/Tree');
 var Constellation = require('./goods/Constellation');
 var HeadSize = 90;
@@ -91,11 +93,23 @@ var Page1 = React.createClass({
     var constellationStyle = this.getConstellationStyle();
     var descStyle = this.getDescStyle();
     // console.log('ratiooooooooooo',this.props.width,this.props.height,this.props.widthRatio,this.props.heightRatio);
+        // <Image style={musicIconStyle} src='/apps/timeline/components/res/musicoff.png' fadeIn={true} useBackingStore={true} />
 
     return (
       <Group style={groupStyle}>
         <Image style={imageStyle} src={backgroundImage} fadeIn={true} useBackingStore={true} />
-        <Image style={musicIconStyle} src='/apps/timeline/components/res/musicoff.png' fadeIn={true} useBackingStore={true} />
+        <MusicController
+          width={this.props.width}
+          height={this.props.height}
+          widthRatio = {this.props.widthRatio}
+          heightRatio = {this.props.heightRatio}
+          scrollTop={this.props.scrollTop} />
+        <Constellation
+          useBackingStore={true}
+          width={this.props.width}
+          ANIMATIONON={this.props.ANIMATIONON}
+          height={this.props.height}
+          scrollTop={this.props.scrollTop} />
         <Stars
           useBackingStore={true}
           width={this.props.width}
@@ -127,6 +141,11 @@ var Page1 = React.createClass({
           HeadSize={HeadSize}
           width={this.props.width}
           height={this.props.height} />
+        <Arrow
+          width={this.props.width}
+          ANIMATIONON={this.props.ANIMATIONON}
+          height={this.props.height}
+          scrollTop={this.props.scrollTop} />
         <Group style={this.getTextGroupStyle()}>
           <Text style={nameStyle}>{this.article.name}</Text>
           <Text style={constellationStyle}>{this.article.constellation}</Text>

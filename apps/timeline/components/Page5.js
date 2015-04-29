@@ -67,7 +67,7 @@ var Page5 = React.createClass({
 
   render: function () {
     console.log('this is Page5 rendering',this.props.width);
-    this.article = {words:$CONFIG['onboardyear']+'年'+$CONFIG['onboardmonth']+'月'+$CONFIG['onboardday']+'日\n正式加入商业产品部\n宇宙之大  能够相遇  已是难得\n这是第'+Math.ceil(this.getTweeningValue('days'))+'天'};
+    this.article = {words:$CONFIG['onboardyear']+'年'+$CONFIG['onboardmonth']+'月'+$CONFIG['onboardday']+'日\n正式加入微博商业产品技术部\n宇宙之大  能够相遇  已是难得\n今天是第'+Math.ceil(this.getTweeningValue('days'))+'天我们相会'};
     var groupStyle = this.getGroupStyle();
     var imageStyle = this.getImageStyle();
     

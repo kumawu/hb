@@ -89,7 +89,7 @@ var Page3 = React.createClass({
     clearTimeout(this.timer);
   },
   componentWillMount: function () {
-    this.article = {words:'旅 途 中 难 免 遇 到 波 折\nBe yourself\n做 最 好 的 自 己\n愿 无 岁 月 可 以 回 头'}
+    this.article = {words:'旅途中难免遇到波折\n要做最好的自己\n愿流年不负\n愿笑容依旧，灿如夏花'}
     if(wordList.length == 0){
       this.formatArticle(this.article.words)
     }
@@ -199,7 +199,7 @@ var Page3 = React.createClass({
       height:this.props.height,
       fontSize: CONTENT_INSET,
       lineHeight: LINEHEIGHT,
-      top: this.props.height/2-4*CONTENT_INSET-3*LINEHEIGHT +(index+1)*LINEHEIGHT,//this.getTweeningValue('projectTop')+
+      top: this.props.height/2.5-4*CONTENT_INSET-3*LINEHEIGHT +(index+1)*LINEHEIGHT,//this.getTweeningValue('projectTop')+
       zIndex: 4,
       fontFace: FontFace('Georgia, serif'),
       textAlign:'center',

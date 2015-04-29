@@ -14,7 +14,7 @@ var Constellation = React.createClass({
   getInitialState: function () {
     return {
       alpha:0,
-      top:0-this.props.height
+      top:0
     };
   },
   componentWillMount: function() {
@@ -26,18 +26,19 @@ var Constellation = React.createClass({
       delay:500,
       endValue: 1
     });
-    var _endTop = 97*this.props.heightRatio;
-    this.tweenState('top', {
-      easing: tweenState.easingTypes.easeInOutQuad,
-      duration: 1000,
-      delay:500,
-      endValue: _endTop
-    });
+    // var _endTop = 97*this.props.heightRatio;
+    // this.tweenState('top', {
+    //   easing: tweenState.easingTypes.easeInOutQuad,
+    //   duration: 1000,
+    //   delay:500,
+    //   endValue: _endTop
+    // });
   },
   render: function() {
-    // console.log('this is constellation rendering');
     var imageStyle = this.getImageStyle();
-    var cons = 'http://img.t.sinajs.cn/t4/apps/hb/static/img/'+$CONFIG["constellation"]+'.png'
+    var cons = 'http://img.t.sinajs.cn/t4/apps/hb/static/img/'+$CONFIG["constellation"]+'.png';
+        console.log('this is constellation rendering',cons);
+
     return (
       <Image style={imageStyle} src={cons} fadeIn={true} useBackingStore={true} />
     );
@@ -47,11 +48,11 @@ var Constellation = React.createClass({
   // ======
 
   getImageStyle: function () {
-    this.width = 473 * this.props.widthRatio;
-    this.height = 460 * this.props.heightRatio;
+    this.width = 1242 * this.props.widthRatio;
+    this.height = 2280 * this.props.heightRatio;
     return {
-      top: this.getTweeningValue('top'),
-      left: 520*this.props.widthRatio,
+      top: 0,
+      left: 0,
       width: this.width,
       height: this.height,
       zIndex: 5,

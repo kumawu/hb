@@ -53,7 +53,7 @@ var Head = React.createClass({
       height: this.props.HeadSize,
       top: this.props.height/2-this.props.HeadSize/2-50,
       left: this.props.width/2-this.props.HeadSize/2,
-      alpha: 0.8,
+      alpha: 1,
       translateY: translateY,
       zIndex: 2,
     };
