@@ -73,7 +73,6 @@ var Page1 = React.createClass({
     this.constellationMetrics = measureText(this.article.constellation, maxWidth, constellationStyle.fontFace, constellationStyle.fontSize, constellationStyle.lineHeight);
     var descStyle = this.getDescStyle();
     this.descMetrics = measureText(this.article.desc, maxWidth, descStyle.fontFace, descStyle.fontSize, descStyle.lineHeight);
-
   },
 
   render: function () {

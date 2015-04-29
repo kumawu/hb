@@ -75,9 +75,9 @@ var Stars = React.createClass({
     }
   },
   render: function() {
-    if(this.props.scrollTop!==0){
-      this.stopAni();
-    }
+    // if(this.props.scrollTop!==0){
+    //   this.stopAni();
+    // }
     // console.log('this is Stars rendering',this.state);
     var _a = this.state.starsAlpha;
     if(items.length != 0){

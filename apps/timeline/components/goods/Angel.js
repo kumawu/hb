@@ -99,9 +99,9 @@ var Angel = React.createClass({
   },
   render: function() {
     // console.log('angel render',_tempArr.length,items.length);
-    if(this.props.scrollTop!==0){
-      this.stopAni();
-    }
+    // if(this.props.scrollTop!==0){
+    //   this.stopAni();
+    // }
     var self = this;
     // renderTimes++;
     for (var i = 0, l = _tempArr.length; i < l; i++) {
