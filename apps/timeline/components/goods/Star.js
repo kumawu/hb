@@ -51,7 +51,6 @@ var Star = React.createClass({
   },
   render: function() {
     // console.log('this is Star rendering');★
-    var imageStyle = this.getImageStyle();
     var starStyle = this.getTitleStyle();
     // <Image style={imageStyle} src='http://img.t.sinajs.cn/t4/apps/hb/static/img/star.png' fadeIn={true} useBackingStore={true} />
     return (
@@ -70,12 +69,12 @@ var Star = React.createClass({
       shadowColor: '#999',
       shadowBlur:20,
      // borderRadius:size2,//size/2
-      left: 723*this.props.widthRatio,
+      left: 720*this.props.widthRatio,
       width: size,
       height: size,
       fontSize: size,
       lineHeight: size,
-      top: this.props.height*0.62,
+      top: this.props.height*0.60,
       color: '#ff0',
       zIndex: 4
     };
@@ -95,19 +94,6 @@ var Star = React.createClass({
       alpha: 1,
       translateY: translateY,
       zIndex: 4
-    };
-  },
-  getImageStyle: function () {
-    this.width = 25 * this.props.widthRatio;
-    this.height = 26 * this.props.heightRatio;
-    console.log('star getImageStyle',this.props.widthRatio,this.props.heightRatio);
-    return {
-      top: this.props.height*0.62,//1465*this.props.heightRatio,
-      left: 723*this.props.widthRatio,
-      width: this.width,
-      height: this.height,
-      zIndex: 3,
-      alpha:this.getTweeningValue('alpha')
     };
   }
 });

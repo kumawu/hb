@@ -36,7 +36,6 @@ var MusicController = React.createClass({
   // Styles
   // ======
   handleClick:function(e){
-    console.log('onTouchStartttttttttttt',e);
     var music = document.getElementById('music');
     if(music.getAttribute('mute') == null||music.getAttribute('mute') == 'false'){
       document.getElementById('music').muted=true;

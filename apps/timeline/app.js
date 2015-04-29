@@ -4,13 +4,11 @@
 
 var React = require('react');
 var ReactCanvas = require('react-canvas');
-// var Page = require('./components/Page');
 var Page1 = require('./components/Page1');
 var Page2 = require('./components/Page2');
 var Page3 = require('./components/Page3');
 var Page4 = require('./components/Page4');
 var Page5 = require('./components/Page5');
-// var articles = require('../common/data');
 
 var Surface = ReactCanvas.Surface;
 var ListView = ReactCanvas.ListView;//出生、入职、挫折、成长、生日
@@ -109,4 +107,3 @@ var App = React.createClass({
       }
     }
 })();
-

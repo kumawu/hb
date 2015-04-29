@@ -92,24 +92,10 @@ var Page1 = React.createClass({
 
     var constellationStyle = this.getConstellationStyle();
     var descStyle = this.getDescStyle();
-    // console.log('ratiooooooooooo',this.props.width,this.props.height,this.props.widthRatio,this.props.heightRatio);
-        // <Image style={musicIconStyle} src='/apps/timeline/components/res/musicoff.png' fadeIn={true} useBackingStore={true} />
-
+       
     return (
       <Group style={groupStyle}>
-        <Image style={imageStyle} src={backgroundImage} fadeIn={true} useBackingStore={true} />
-        <MusicController
-          width={this.props.width}
-          height={this.props.height}
-          widthRatio = {this.props.widthRatio}
-          heightRatio = {this.props.heightRatio}
-          scrollTop={this.props.scrollTop} />
-        <Constellation
-          useBackingStore={true}
-          width={this.props.width}
-          ANIMATIONON={this.props.ANIMATIONON}
-          height={this.props.height}
-          scrollTop={this.props.scrollTop} />
+        <Image style={imageStyle} src={backgroundImage} fadeIn={false} useBackingStore={true} />
         <Stars
           useBackingStore={true}
           width={this.props.width}
@@ -141,6 +127,12 @@ var Page1 = React.createClass({
           HeadSize={HeadSize}
           width={this.props.width}
           height={this.props.height} />
+        <MusicController
+          width={this.props.width}
+          height={this.props.height}
+          widthRatio = {this.props.widthRatio}
+          heightRatio = {this.props.heightRatio}
+          scrollTop={this.props.scrollTop} />
         <Arrow
           width={this.props.width}
           ANIMATIONON={this.props.ANIMATIONON}
