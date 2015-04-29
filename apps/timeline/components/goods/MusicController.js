@@ -38,12 +38,14 @@ var MusicController = React.createClass({
   handleClick:function(e){
     var music = document.getElementById('music');
     if(music.getAttribute('mute') == null||music.getAttribute('mute') == 'false'){
-      document.getElementById('music').muted=true;
-      document.getElementById('music').setAttribute('mute',true);
+      music.pause();
+      music.muted=true;
+     music.setAttribute('mute',true);
       // this.setState('icon',offIcon);
     }else{
-      document.getElementById('music').muted=false;
-      document.getElementById('music').setAttribute('mute',false);
+      music.play();
+      music.muted=false;
+      music.setAttribute('mute',false);
       // this.setState('icon',onIcon);
     }
   },
