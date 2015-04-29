@@ -85,7 +85,17 @@ var App = React.createClass({
 });
 
 (function(){
-  var imgs = ["http://img.t.sinajs.cn/t4/apps/hb/static/img/starry.jpg","http://img.t.sinajs.cn/t4/apps/hb/static/img/page2.jpg","http://img.t.sinajs.cn/t4/apps/hb/static/img/page3.jpg","http://img.t.sinajs.cn/t4/apps/hb/static/img/page4.jpg","http://img.t.sinajs.cn/t4/apps/hb/static/img/page5.jpg"];
+  var imgs = ["http://img.t.sinajs.cn/t4/apps/hb/static/img/starry.jpg",
+  "http://img.t.sinajs.cn/t4/apps/hb/static/img/page2.jpg",
+  "http://img.t.sinajs.cn/t4/apps/hb/static/img/page3.jpg",
+  "http://img.t.sinajs.cn/t4/apps/hb/static/img/page4.jpg",
+  "http://img.t.sinajs.cn/t4/apps/hb/static/img/page5.jpg",
+  "http://img.t.sinajs.cn/t4/apps/hb/static/img/body.png",
+  "http://img.t.sinajs.cn/t4/apps/hb/static/img/whale.png",
+  "http://img.t.sinajs.cn/t4/apps/hb/static/img/ground.png",
+  "http://img.t.sinajs.cn/t4/apps/hb/static/img/Gemini.png",
+  "http://img.t.sinajs.cn/t4/apps/hb/static/img/Taurus.png",
+  ];
   var loaded = 0;
   var imgCache = [];
     for (var i=0, l=imgs.length;i<l; i++){
